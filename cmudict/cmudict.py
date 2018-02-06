@@ -6,38 +6,40 @@ cmudict.py
 ~~~~~~~~~~
 
 This module returns the installation location of various cmudict files.
-The default function where returns the location of the cmudict.dict file.
+The default function where() returns the location of the cmudict.dict file.
 """
 import os
 import warnings
 
 
-def dir():
-    """The directory of all the files."""
-    d = os.path.dirname(__file__)
-
-    return d
+def data_dir():
+    """The directory containing the cmudict data files."""
+    return os.path.join(os.path.dirname(__file__), '/data')
 
 
 def where_dict():
     """The location of the cmudict.dict file."""
-    return os.path.join(dir(), 'cmudict.dict')
+    return os.path.join(data_dir(), 'cmudict.dict')
 
 
-def where_phonse():
-    return os.path.join(dir(), 'cmudict.phones')
+def where_phones():
+    """The location of the cmudict.phones file."""
+    return os.path.join(data_dir(), 'cmudict.phones')
 
 
 def where_symbols():
-    return os.path.join(dir(), 'cmudict.phones')
+    """The location of the cmudict.symbols file."""
+    return os.path.join(data_dir(), 'cmudict.phones')
 
 
 def where_vp():
-    return os.path.join(dir(), 'cmudict.vp')
+    """The location of the cmudict.vp file."""
+    return os.path.join(data_dir(), 'cmudict.vp')
 
 
 def where_license():
-    return os.path.join(dir(), 'LICENSE')
+    """The location of the cmudict LICENSE file."""
+    return os.path.join(data_dir(), 'LICENSE')
 
 
 def where():
