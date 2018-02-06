@@ -1,3 +1,7 @@
-from .cmudict import where
+# -*- coding: utf-8 -*-
 
-__version__ = "0.0.0"
+from .cmudict import where
+from os import path
+
+with open(path.join(path.dirname(__file__), 'VERSION')) as version_file:
+    __version__ = version_file.read().strip()
