@@ -11,40 +11,33 @@ The default function where() returns the location of the cmudict.dict file.
 import os
 import warnings
 
-
-def data_dir():
-    """The directory containing the cmudict data files."""
-    return os.path.join(os.path.dirname(__file__), '/data')
-
-
-def where_dict():
-    """The location of the cmudict.dict file."""
-    return os.path.join(data_dir(), 'cmudict.dict')
-
-
-def where_phones():
-    """The location of the cmudict.phones file."""
-    return os.path.join(data_dir(), 'cmudict.phones')
-
-
-def where_symbols():
-    """The location of the cmudict.symbols file."""
-    return os.path.join(data_dir(), 'cmudict.phones')
-
-
-def where_vp():
-    """The location of the cmudict.vp file."""
-    return os.path.join(data_dir(), 'cmudict.vp')
-
-
-def where_license():
-    """The location of the cmudict LICENSE file."""
-    return os.path.join(data_dir(), 'LICENSE')
+"""The directory containing the cmudict data files."""
+DATA_DIR = os.path.join(os.path.dirname(__file__), '/data')
 
 
 def where():
     """The location of the cmudict.dict file."""
-    return where_dict()
+    return os.path.join(DATA_DIR, 'cmudict.dict')
+
+
+def where_license():
+    """The location of the cmudict LICENSE file."""
+    return os.path.join(DATA_DIR, 'LICENSE')
+
+
+def where_phones():
+    """The location of the cmudict.phones file."""
+    return os.path.join(DATA_DIR, 'cmudict.phones')
+
+
+def where_symbols():
+    """The location of the cmudict.symbols file."""
+    return os.path.join(DATA_DIR, 'cmudict.phones')
+
+
+def where_vp():
+    """The location of the cmudict.vp file."""
+    return os.path.join(DATA_DIR, 'cmudict.vp')
 
 
 if __name__ == '__main__':
