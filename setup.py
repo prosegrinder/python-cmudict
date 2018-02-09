@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from distutils.core import setup
 from os import path
 
 import setuptools.command.build_py
@@ -10,7 +11,7 @@ with open(path.join(path.dirname(__file__), 'VERSION'), encoding='utf-8') as ver
     VERSION = version_file.read().strip()
 # Long Description
 with open(path.join(path.dirname(__file__), 'README.rst'), encoding='utf-8') as readme_file:
-    VERSION = readme_file.read()
+    long_description = readme_file.read()
 
 # git rev-parse HEAD
 # GitPython: repo.head.commit.hexsha
@@ -40,5 +41,16 @@ class BuildPyCommand(setuptools.command.build_py.build_py):
 
 
 setup(
-
+     cmdclass={
+        'build_py': BuildPyCommand
+    }
+    name='cmudict',
+    version=VERSION,
+    description='',
+    long_description=long_description,
+    author='David L. Day',
+    author_email='dday376@gmail.com',
+    license='',
+    packages=['cmudict'],
+    zip_safe=False
 )
