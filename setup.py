@@ -41,7 +41,7 @@ class BuildPyCommand(setuptools.command.build_py.build_py):
 
 
 setup(
-     cmdclass={
+    cmdclass={
         'build_py': BuildPyCommand
     }
     name='cmudict',
