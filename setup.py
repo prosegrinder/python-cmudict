@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from distutils.core import setup
+from setuptools import setup
 from os import path, environ
 
 # Version
@@ -19,7 +19,37 @@ setup(
     long_description=long_description,
     author='David L. Day',
     author_email='dday376@gmail.com',
-    license='',
-    packages=['cmudict'],
-    zip_safe=False
+    url='https://github.com/prosegrinder/python-cmudict',
+    packages=[
+        'cmudict'
+    ],
+    package_dir={'cmudict': 'cmudict'},
+    package_data={
+        '': ['LICENSE', '*.rst', 'MANIFEST.in'],
+        'cmudict': [
+            'VERSION',
+            'data/cmudict.*',
+            'data/LICENSE',
+            'data/README',
+            'data/README.developer'
+        ]
+    },
+    include_package_data=True,
+    zip_safe=False,
+    license='GPL-3.0',
+    classifiers=(
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7'
+    )
 )
