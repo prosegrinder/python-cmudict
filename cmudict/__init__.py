@@ -19,27 +19,32 @@ DATA_DIR = path.join(path.dirname(__file__), 'data')
 
 def where():
     """The location of the cmudict.dict file."""
-    return path.join(DATA_DIR, 'cmudict.dict')
+    f = path.join(DATA_DIR, 'cmudict.dict')
+    return f
 
 
 def where_license():
     """The location of the cmudict LICENSE file."""
-    return path.join(DATA_DIR, 'LICENSE')
+    f = path.join(DATA_DIR, 'LICENSE')
+    return f
 
 
 def where_phones():
     """The location of the cmudict.phones file."""
-    return path.join(DATA_DIR, 'cmudict.phones')
+    f = path.join(DATA_DIR, 'cmudict.phones')
+    return f
 
 
 def where_symbols():
     """The location of the cmudict.symbols file."""
-    return path.join(DATA_DIR, 'cmudict.phones')
+    f = path.join(DATA_DIR, 'cmudict.phones')
+    return f
 
 
 def where_vp():
     """The location of the cmudict.vp file."""
-    return path.join(DATA_DIR, 'cmudict.vp')
+    f = path.join(DATA_DIR, 'cmudict.vp')
+    return f
 
 
 if __name__ == '__main__':
