@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
-from os import path
-
-import pytest
 
 import cmudict
+from os import path
 
+def test_where():
+    assert path.isfile(cmudict.where())
 
-class TestWheres(object):
+def test_where_license():
+    assert path.isfile(cmudict.where_license())
 
-    def __init__(self):
-        self.project_dir = path.join(path.dirname(path.abspath(__file__)), '..')
+def test_where_phones():
+    assert path.isfile(cmudict.where_phones())
 
-    def test_where(self):
-        assert cmudict.where() is self.project_dir + 'cmudict/data/cmudict.dict'
+def test_where_symbols():
+    assert path.isfile(cmudict.where_symbols())
+
+def test_where_vp():
+    assert path.isfile(cmudict.where_vp())
