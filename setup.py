@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup
-from os import path, environ
+from os import path
 
 # Version
 with open(path.join(path.dirname(__file__), 'cmudict', 'VERSION'), encoding='utf-8') as version_file:
