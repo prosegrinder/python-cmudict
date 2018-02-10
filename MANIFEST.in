@@ -1,3 +1,5 @@
-include MANIFEST.in *.rst LICENSE
 recursive-include cmudict *
 recursive-exclude cmudict .git
+recursive-include test *.py
+
+include MANIFEST.in *.rst LICENSE
