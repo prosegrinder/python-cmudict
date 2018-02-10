@@ -37,7 +37,7 @@ def where_phones():
 
 def where_symbols():
     """The location of the cmudict.symbols file."""
-    f = path.join(DATA_DIR, 'cmudict.phones')
+    f = path.join(DATA_DIR, 'cmudict.symbols')
     return f
 
 
