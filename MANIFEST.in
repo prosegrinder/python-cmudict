@@ -1,0 +1,3 @@
+include MANIFEST.in *.rst LICENSE
+recursive-include cmudict *
+recursive-exclude cmudict .git
