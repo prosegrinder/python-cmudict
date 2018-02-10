@@ -6,7 +6,7 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
-# install:
-#   - pip install -r requirements.txt
-# script:
-#   - pytest # or py.test for Python versions 3.5 and below
+install:
+  - python ./setup.py install
+script:
+  - pytest # or py.test for Python versions 3.5 and below
