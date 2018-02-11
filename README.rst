@@ -1,6 +1,8 @@
 CMUdict: Python wrapper for cmudict
 ===================================
 
+.. image:: https://travis-ci.org/prosegrinder/python-cmudict.svg?branch=master
+    :target: https://travis-ci.org/prosegrinder/python-cmudict
 .. image:: https://api.codacy.com/project/badge/Grade/a4cd7e19a37d4e578160d3c3e3448101
      :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
 
