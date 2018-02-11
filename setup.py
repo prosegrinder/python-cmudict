@@ -5,10 +5,10 @@ from os import path
 from setuptools import setup
 
 # Version
-with open(path.join(path.dirname(__file__), 'cmudict', 'VERSION'), encoding='utf-8') as version_file:
+with open(path.join(path.dirname(__file__), 'cmudict', 'VERSION')) as version_file:
     VERSION = version_file.read().strip()
 # Long Description
-with open(path.join(path.dirname(__file__), 'README.rst'), encoding='utf-8') as readme_file:
+with open(path.join(path.dirname(__file__), 'README.rst')) as readme_file:
     LONG_DESCRIPTION = readme_file.read()
 
 setup(
