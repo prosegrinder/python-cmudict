@@ -8,7 +8,7 @@ install:
   - pip install -U pip
   - python ./setup.py develop
 before_script:
-  - pip install -r requirements-text.txt
+  - pip install -r requirements-test.txt
 script:
   - pytest test/test_wheres.py
 after_success:
