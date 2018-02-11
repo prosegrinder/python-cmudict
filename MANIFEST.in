@@ -1,3 +1,9 @@
-include MANIFEST.in *.rst LICENSE
-recursive-include cmudict *
-recursive-exclude cmudict .git
+include MANIFEST.in
+include README.rst
+include LICENSE
+exclude cmudict/data/.git
+graft cmudict
+graft test
+global-exclude .git
+global-exclude __pycache__
+global-exclude *.py[co] .DS_Store

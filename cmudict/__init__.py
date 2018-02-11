@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -13,7 +12,7 @@ with open(path.join(path.dirname(__file__), 'VERSION')) as version_file:
     __version__ = version_file.read().strip()
 
 
-"""The directory containing the cmudict data files."""
+# The directory containing the cmudict data files.
 DATA_DIR = path.join(path.dirname(__file__), 'data')
 
 

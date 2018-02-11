@@ -1,6 +1,11 @@
 CMUdict: Python wrapper for cmudict
 ===================================
 
+.. image:: https://travis-ci.org/prosegrinder/python-cmudict.svg?branch=master
+    :target: https://travis-ci.org/prosegrinder/python-cmudict
+.. image:: https://api.codacy.com/project/badge/Grade/a4cd7e19a37d4e578160d3c3e3448101
+     :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
+
 `CMUdict` is a versioned python wrapper package for
 `The CMU Pronouncing Dictionary`_ data files, and
 takes a similar approach to data bundling as `Certifi`_
@@ -16,9 +21,14 @@ Installation
 You can also install it from source::
 
     $ git clone https://github.com/prosegrinder/python-cmudict.git
+    Cloning into 'python-cmudict'...
+    ...
     $ cd python-cmudict
-    $ python setup.py bdist_wheel
-    $ pip install ./dist/cmudict-0.1.0-py2.py3-none-any.whl
+    $ git submodule update --init --recursive
+    Submodule 'cmudict/data' (https://github.com/cmusphinx/cmudict.git) registered for path 'cmudict/data'...
+    ...
+    $ python setup.py install
+    ...
 
 Usage
 -----
