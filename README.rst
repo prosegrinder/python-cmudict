@@ -21,9 +21,14 @@ Installation
 You can also install it from source::
 
     $ git clone https://github.com/prosegrinder/python-cmudict.git
+    Cloning into 'prosegrinder/python-cmudict'...
+    ...
     $ cd python-cmudict
-    $ python setup.py bdist_wheel
-    $ pip install ./dist/cmudict-0.1.0-py2.py3-none-any.whl
+    $ git submodule update --init --recursive
+    Submodule 'cmudict/data' (https://github.com/cmusphinx/cmudict.git) registered for path 'cmudict/data'...
+    ...
+    $ python setup.py install
+    ...
 
 Usage
 -----
