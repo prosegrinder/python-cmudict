@@ -5,7 +5,11 @@ python:
   - "3.5"
   - "3.6"
 install:
-  - pip install pytest
-  - python ./setup.py install
+  - pip install -U pip
+  - python ./setup.py develop
+before_script:
+  - pip install -r requirements-text.txt
 script:
-  - pytest # or py.test for Python versions 3.5 and below
+  - pytest test/test_wheres.py
+after_success:
+  - coveralls
