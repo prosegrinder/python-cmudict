@@ -5,44 +5,48 @@ This module returns the installation location of various cmudict files.
 The default function where() returns the location of the cmudict.dict file.
 """
 
-from os import path
 import warnings
+from os import path
 
-with open(path.join(path.dirname(__file__), 'VERSION')) as version_file:
-    __version__ = version_file.read().strip()
+import pkg_resources
 
+__version__ = pkg_resources.resource_string('cmudict', 'VERSION').strip()
 
-# The directory containing the cmudict data files.
-DATA_DIR = path.join(path.dirname(__file__), 'data')
-
+def _where(filename):
+    f = pkg_resources.resource_filename(__name__, filename)
+    return f
 
 def where():
     """The location of the cmudict.dict file."""
-    f = path.join(DATA_DIR, 'cmudict.dict')
+    f = pkg_resources.resource_filename(__name__, 'data/cmudict.dict')
     return f
 
+def stream():
+    """A readable file-like object of the cmudict.dict file."""
+    s = pkg_resources.resource_stream(__name__, 'data/cmudict.dict')
+    return s
 
 def where_license():
     """The location of the cmudict LICENSE file."""
-    f = path.join(DATA_DIR, 'LICENSE')
+    f = pkg_resources.resource_filename(__name__, 'data/LICENSE')
     return f
 
 
 def where_phones():
     """The location of the cmudict.phones file."""
-    f = path.join(DATA_DIR, 'cmudict.phones')
+    f = pkg_resources.resource_filename(__name__, 'data/cmudict.phones')
     return f
 
 
 def where_symbols():
     """The location of the cmudict.symbols file."""
-    f = path.join(DATA_DIR, 'cmudict.symbols')
+    f = pkg_resources.resource_filename(__name__, 'data/cmudict.symbols')
     return f
 
 
 def where_vp():
     """The location of the cmudict.vp file."""
-    f = path.join(DATA_DIR, 'cmudict.vp')
+    f = pkg_resources.resource_filename(__name__, 'data/cmudict.vp')
     return f
 
 
