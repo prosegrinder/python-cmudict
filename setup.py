@@ -14,7 +14,7 @@ with open(path.join(path.dirname(__file__), 'README.rst')) as readme_file:
 setup(
     name='cmudict',
     version=VERSION,
-    description='',
+    description='A versioned python wrapper package for The CMU Pronouncing Dictionary data files.',
     long_description=LONG_DESCRIPTION,
     author='David L. Day',
     author_email='dday376@gmail.com',
