@@ -7,7 +7,8 @@ The default function where() returns the location of the cmudict.dict file.
 
 import pkg_resources
 
-__version__ = pkg_resources.resource_string('cmudict', 'VERSION').strip()
+__version__ = pkg_resources.resource_string(
+    'cmudict', 'VERSION').decode('utf-8').strip()
 
 
 def _where(resource_name):
