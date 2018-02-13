@@ -23,17 +23,19 @@ You can also install it from source::
     $ git clone https://github.com/prosegrinder/python-cmudict.git
     Cloning into 'python-cmudict'...
     ...
+
     $ cd python-cmudict
     $ git submodule update --init --recursive
     Submodule 'cmudict/data' (https://github.com/cmusphinx/cmudict.git) registered for path 'cmudict/data'...
     ...
+
     $ python setup.py install
     ...
 
 Usage
 -----
 
-To reference the installed cmudict data files, you can use the
+To find the location of installed cmudict data files, you can use the
 built-in functions::
 
     >>> import cmudict
@@ -52,6 +54,36 @@ built-in functions::
 
     >>> cmudict.where_vp()
     '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.vp'
+
+Data in the files can also be accessed directly as streams
+(pkg_resources.resource_stream)::
+
+    >>> import cmudict
+
+    >>> s = cmudict.stream()
+    >>> for line in s:
+    >>>     print(line)
+    ...
+
+    >>> s = cmudict.stream_license()
+    >>> for line in s:
+    >>>     print(line)
+    ...
+
+    >>> s = cmudict.stream_phones()
+    >>> for line in s:
+    >>>     print(line)
+    ...
+
+    >>> s = cmudict.stream_symbols()
+    >>> for line in s:
+    >>>     print(line)
+    ...
+
+    >>> s = cmudict.stream_vp()
+    >>> for line in s:
+    >>>     print(line)
+    ...
 
 Credits
 -------
