@@ -56,33 +56,34 @@ built-in functions::
     '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.vp'
 
 Data in the files can also be accessed directly as streams
-(pkg_resources.resource_stream)::
+(pkg_resources.resource_stream). Note the stream is returned
+in binary mode, hence the addition of ```.decode('utf-8')```::
 
     >>> import cmudict
 
     >>> s = cmudict.stream()
     >>> for line in s:
-    >>>     print(line)
+    >>>     print(line.decode('utf-8'))
     ...
 
     >>> s = cmudict.stream_license()
     >>> for line in s:
-    >>>     print(line)
+    >>>     print(line.decode('utf-8'))
     ...
 
     >>> s = cmudict.stream_phones()
     >>> for line in s:
-    >>>     print(line)
+    >>>     print(line.decode('utf-8'))
     ...
 
     >>> s = cmudict.stream_symbols()
     >>> for line in s:
-    >>>     print(line)
+    >>>     print(line.decode('utf-8'))
     ...
 
     >>> s = cmudict.stream_vp()
     >>> for line in s:
-    >>>     print(line)
+    >>>     print(line.decode('utf-8'))
     ...
 
 Credits
