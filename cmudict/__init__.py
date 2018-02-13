@@ -1,49 +1,84 @@
 # -*- coding: utf-8 -*-
 
 """
-This module returns the installation location of various cmudict files.
+This module provides access to the location and stream of the cmudict files.
 The default function where() returns the location of the cmudict.dict file.
 """
 
-from os import path
-import warnings
+import pkg_resources
 
-with open(path.join(path.dirname(__file__), 'VERSION')) as version_file:
-    __version__ = version_file.read().strip()
+__version__ = pkg_resources.resource_string(
+    'cmudict', 'VERSION').decode('utf-8').strip()
 
 
-# The directory containing the cmudict data files.
-DATA_DIR = path.join(path.dirname(__file__), 'data')
+def _where(resource_name):
+    f = pkg_resources.resource_filename(__name__, resource_name)
+    return f
+
+
+def _stream(resource_name):
+    s = pkg_resources.resource_stream(__name__, resource_name)
+    return s
 
 
 def where():
     """The location of the cmudict.dict file."""
-    f = path.join(DATA_DIR, 'cmudict.dict')
+    f = _where('data/cmudict.dict')
     return f
+
+
+def stream():
+    """A readable file-like object of the cmudict.dict file."""
+    s = _stream('data/cmudict.dict')
+    return s
 
 
 def where_license():
     """The location of the cmudict LICENSE file."""
-    f = path.join(DATA_DIR, 'LICENSE')
+    f = _where('data/LICENSE')
     return f
+
+
+def stream_license():
+    """A readable file-like object of the LICENSE file."""
+    s = _stream('data/LICENSE')
+    return s
 
 
 def where_phones():
     """The location of the cmudict.phones file."""
-    f = path.join(DATA_DIR, 'cmudict.phones')
+    f = _where('data/cmudict.phones')
     return f
+
+
+def stream_phones():
+    """A readable file-like object of the cmudict.phones file."""
+    s = _stream('data/cmudict.phones')
+    return s
 
 
 def where_symbols():
     """The location of the cmudict.symbols file."""
-    f = path.join(DATA_DIR, 'cmudict.symbols')
+    f = _where('data/cmudict.symbols')
     return f
+
+
+def stream_symbols():
+    """A readable file-like object of the cmudict.symbols file."""
+    s = _stream('data/cmudict.symbols')
+    return s
 
 
 def where_vp():
     """The location of the cmudict.vp file."""
-    f = path.join(DATA_DIR, 'cmudict.vp')
+    f = _where('data/cmudict.vp')
     return f
+
+
+def stream_vp():
+    """A readable file-like object of the cmudict.vp file."""
+    s = _stream('data/cmudict.vp')
+    return s
 
 
 if __name__ == '__main__':

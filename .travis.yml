@@ -10,4 +10,4 @@ install:
 before_script:
   - pip install -r requirements-test.txt
 script:
-  - pytest test/test_wheres.py
+  - pytest test/*
