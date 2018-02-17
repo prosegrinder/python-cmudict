@@ -86,15 +86,35 @@ in binary mode, hence the addition of ```.decode('utf-8')```::
     >>>     print(line.decode('utf-8'))
     ...
 
+And finally, cmudict has a set of functions compatible with
+`nltk.corpus.reader.cmudict`_::
+
+    >>> import cmudict
+
+    >>> d = cmudict.dict()
+    ...
+
+    >>> e = cmudict.entries()
+    ...
+
+    >>> r = cmudict.raw()
+    ...
+
+    >>> w = cmudict.words()
+    ...
+
 Credits
 -------
 
-Built on the following open source projects:
+Built on or modeled after the following open source projects:
 
 - `The CMU Pronouncing Dictionary`_
+- `NLTK`_
 - `Certifi`_
 
 
 
 .. _`The CMU Pronouncing Dictionary`: https://github.com/cmusphinx/cmudict
+.. _`NLTK`: https://github.com/nltk/nltk
+.. _`nltk.corpus.reader.cmudict`: http://www.nltk.org/_modules/nltk/corpus/reader/cmudict.html
 .. _`Certifi`: https://github.com/certifi/python-certifi
