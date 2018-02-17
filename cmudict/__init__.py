@@ -80,8 +80,8 @@ def where_vp():
 
 def stream_vp():
     """A readable file-like object of the cmudict.vp file."""
-    stream = _stream('data/cmudict.vp')
-    return stream
+    s = _stream('data/cmudict.vp')
+    return s
 
 
 def dict():
