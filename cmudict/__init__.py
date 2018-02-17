@@ -86,7 +86,7 @@ def stream_vp():
 
 def dict():
     """
-    Compatability with NLTK.
+    Compatibility with NLTK.
     Returns the cmudict lexicon as a dictionary, whose keys are
     lowercase words and whose values are lists of pronunciations.
     """
@@ -98,7 +98,7 @@ def dict():
 
 def entries():
     """
-    Compatability with NLTK.
+    Compatibility with NLTK.
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
@@ -112,7 +112,7 @@ def entries():
 
 def raw():
     """
-    Compatability with NLTK.
+    Compatibility with NLTK.
     Returns the cmudict lexicon as a raw string.
     """
     string = pkg_resources.resource_string(__name__, 'data/cmudict.dict')
@@ -121,7 +121,7 @@ def raw():
 
 def words():
     """
-    Compatability with NLTK.
+    Compatibility with NLTK.
     Returns a list of all words defined in the cmudict lexicon.
     """
     return [word.lower() for (word, _) in entries()]
