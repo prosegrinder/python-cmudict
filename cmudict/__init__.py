@@ -14,6 +14,12 @@ __version__ = pkg_resources.resource_string(
     'cmudict', 'VERSION').decode('utf-8').strip()
 
 
+CMUDICT_DICT = 'data/cmudict.dict'
+CMUDICT_PHONES = 'data/cmudict.phones'
+CMUDICT_SYMBOLS = 'data/cmudict.symbols'
+CMUDICT_VP = 'data/cmudict.vp'
+CMUDICT_LICENSE = 'data/LICENSE'
+
 def _stream(resource_name):
     stream = pkg_resources.resource_stream(__name__, resource_name)
     return stream
@@ -47,19 +53,19 @@ def dict():
 
 def dict_stream():
     """Return a readable file-like object of the cmudict.dict file."""
-    stream = _stream('data/cmudict.dict')
+    stream = _stream(CMUDICT_DICT)
     return stream
 
 
 def dict_string():
     """Return the contents of cmudict.dict as a string."""
-    string = _string('data/cmudict.dict')
+    string = _string(CMUDICT_DICT)
     return string
 
 
 def license_string():
     """Return the contents of LICENSE as a string."""
-    string = _string('data/LICENSE')
+    string = _string(CMUDICT_LICENSE)
     return string
 
 
@@ -73,13 +79,13 @@ def phones():
 
 def phones_stream():
     """Return a readable file-like object of the cmudict.phones file."""
-    s = _stream('data/cmudict.phones')
+    s = _stream(CMUDICT_PHONES)
     return s
 
 
 def phones_string():
     """Return the contents of cmudict.phones as a string."""
-    string = _string('data/cmudict.phones')
+    string = _string(CMUDICT_PHONES)
     return string
 
 
@@ -93,13 +99,13 @@ def symbols():
 
 def symbols_stream():
     """Return a readable file-like object of the cmudict.symbols file."""
-    stream = _stream('data/cmudict.symbols')
+    stream = _stream(CMUDICT_SYMBOLS)
     return stream
 
 
 def symbols_string():
     """Return the contents of cmudict.symbols as a string."""
-    string = _string('data/cmudict.symbols')
+    string = _string(CMUDICT_SYMBOLS)
     return string
 
 
@@ -112,13 +118,13 @@ def vp():
 
 def vp_stream():
     """Return a readable file-like object of the cmudict.vp file."""
-    stream = _stream('data/cmudict.vp')
+    stream = _stream(CMUDICT_VP)
     return stream
 
 
 def vp_string():
     """Return the contents of cmudict.vp as a string."""
-    string = _stream('data/cmudict.vp')
+    string = _string(CMUDICT_VP)
     return string
 
 
