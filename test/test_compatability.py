@@ -4,12 +4,12 @@ import cmudict
 
 
 def test_dict():
-    EXPECTED = 125996
+    EXPECTED_SIZE = 125996
     d = cmudict.dict()
-    COUNT = len(d)
-    if (COUNT != EXPECTED):
+    SIZE = len(d)
+    if (EXPECTED_SIZE != SIZE):
         raise AssertionError('cmudict.dict(): Expected {0} keys, got {1}.'.format(
-            EXPECTED, COUNT))
+            EXPECTED_SIZE, SIZE))
 
 
 def test_entries():
