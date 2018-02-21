@@ -7,9 +7,9 @@ CMUdict: Python wrapper for cmudict
      :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
 
 `CMUdict` is a versioned python wrapper package for
-`The CMU Pronouncing Dictionary`_ data files, and
-takes a similar approach to data bundling as `Certifi`_
-does with Mozilla's Root Certificates.
+`The CMU Pronouncing Dictionary`_ data files. The main purpose
+is to expose the data with little or no assumption on how
+it is to be used.
 
 Installation
 ------------
@@ -35,73 +35,46 @@ You can also install it from source::
 Usage
 -----
 
-To find the location of installed cmudict data files, you can use the
-built-in functions::
+The cmudict data set includes 4 data files: cmudict.dict, cmudict.phones,
+cmudict.symbols, and cmudict.vp. See `The CMU Pronouncing Dictionary`_ for
+details on the data. Chances are, if you're here, you already know what's
+in the files.
+
+Each file can be accessed through three functions, one which returns the raw (string)
+contents, one which returns a binary stream of the file, and one which does minimal
+processing of the file into an appropriate structure::
 
     >>> import cmudict
 
-    >>> cmudict.where()
-    '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.dict'
+    >>> cmudict.dict() # Compatible with NLTK
+    >>> cmudict.dict_string()
+    >>> cmudict.dict_stream()
 
-    >>> cmudict.where_license()
-    '/usr/local/lib/python2.7/site-packages/cmudict/data/LICENSE'
+    >>> cmudict.phones()
+    >>> cmudict.phones_string()
+    >>> cmudict.phones_stream()
 
-    >>> cmudict.where_phones()
-    '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.phones'
+    >>> cmudict.symbols()
+    >>> cmudict.symbols_string()
+    >>> cmudict.symbols_stream()
 
-    >>> cmudict.where_symbols()
-    '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.symbols'
+    >>> cmudict.vp()
+    >>> cmudict.vp_string()
+    >>> cmudict.vp_stream()
 
-    >>> cmudict.where_vp()
-    '/usr/local/lib/python2.7/site-packages/cmudict/data/cmudict.vp'
+Three additional functions are included to maintain compatibility with NLTK: cumdict.entries(),
+cmudict.raw(), and cmudict.words(). See the `nltk.corpus.reader.cmudict`_ documentation for
+details::
 
-Data in the files can also be accessed directly as streams
-(pkg_resources.resource_stream). Note the stream is returned
-in binary mode, hence the addition of ```.decode('utf-8')```::
+    >>> cmudict.entries() # Compatible with NLTK
+    >>> cmudict.raw() # Compatible with NLTK
+    >>> cmudict.words() # Compatible with NTLK
 
-    >>> import cmudict
+And finally, the license for the cmudict data set is available as well::
 
-    >>> s = cmudict.stream()
-    >>> for line in s:
-    >>>     print(line.decode('utf-8'))
-    ...
 
-    >>> s = cmudict.stream_license()
-    >>> for line in s:
-    >>>     print(line.decode('utf-8'))
-    ...
+    >>> cmudict.license_string() # Returns the cmudict license as a string
 
-    >>> s = cmudict.stream_phones()
-    >>> for line in s:
-    >>>     print(line.decode('utf-8'))
-    ...
-
-    >>> s = cmudict.stream_symbols()
-    >>> for line in s:
-    >>>     print(line.decode('utf-8'))
-    ...
-
-    >>> s = cmudict.stream_vp()
-    >>> for line in s:
-    >>>     print(line.decode('utf-8'))
-    ...
-
-And finally, cmudict has a set of functions compatible with
-`nltk.corpus.reader.cmudict`_::
-
-    >>> import cmudict
-
-    >>> d = cmudict.dict()
-    ...
-
-    >>> e = cmudict.entries()
-    ...
-
-    >>> r = cmudict.raw()
-    ...
-
-    >>> w = cmudict.words()
-    ...
 
 Credits
 -------
@@ -110,11 +83,8 @@ Built on or modeled after the following open source projects:
 
 - `The CMU Pronouncing Dictionary`_
 - `NLTK`_
-- `Certifi`_
-
 
 
 .. _`The CMU Pronouncing Dictionary`: https://github.com/cmusphinx/cmudict
 .. _`NLTK`: https://github.com/nltk/nltk
 .. _`nltk.corpus.reader.cmudict`: http://www.nltk.org/_modules/nltk/corpus/reader/cmudict.html
-.. _`Certifi`: https://github.com/certifi/python-certifi
