@@ -84,6 +84,7 @@ def phones_string():
 
 
 def symbols():
+    """Return a list of symbols."""
     symbols = []
     for line in symbols_stream():
         symbols.append(line.decode('utf-8').strip())
@@ -121,18 +122,15 @@ def vp_string():
     return string
 
 
-# The entries(), raw(), and words() maintain compatability with NTLK
+# The .entries(), .raw(), and .words() functions
+# maintain compatability with NTLK.
 def entries():
     """
     Compatibility with NLTK.
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
-    entries = []
-    for line in dict_stream():
-        parts = line.decode('utf-8').strip().split()
-        word = re.sub(r'\(\d+\)$', '', parts[0])
-        entries.append((word, parts[1:]))
+    entries = _entries(dict_stream())
     return entries
 
 
