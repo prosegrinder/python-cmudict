@@ -1,10 +1,17 @@
 CMUdict: Python wrapper for cmudict
 ===================================
 
+.. image:: https://img.shields.io/pypi/v/cmudict.svg
+    :target: https://pypi.python.org/pypi/cmudict
+    :alt: Latest PyPI version
+
 .. image:: https://travis-ci.org/prosegrinder/python-cmudict.svg?branch=master
     :target: https://travis-ci.org/prosegrinder/python-cmudict
+    :alt: Latest Travis CI build status
+
 .. image:: https://api.codacy.com/project/badge/Grade/a4cd7e19a37d4e578160d3c3e3448101
      :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
+     :alt: Latest Codacy Coverage Report
 
 `CMUdict` is a versioned python wrapper package for
 `The CMU Pronouncing Dictionary`_ data files. The main purpose
