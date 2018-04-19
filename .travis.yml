@@ -13,7 +13,7 @@ before_script:
 - pip install -r requirements-test.txt
 script:
 - python ./setup.py develop
-- pytest test/*
+- pytest tests/*
 deploy:
   provider: pypi
   user: davidlday

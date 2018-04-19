@@ -3,7 +3,7 @@ include README.rst
 include LICENSE
 exclude cmudict/data/.git
 graft cmudict
-graft test
+graft tests
 global-exclude .git
 global-exclude __pycache__
 global-exclude *.py[co] .DS_Store
