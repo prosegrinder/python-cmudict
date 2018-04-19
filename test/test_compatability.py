@@ -4,7 +4,7 @@ import cmudict
 
 
 def test_dict():
-    EXPECTED_SIZE = 125996
+    EXPECTED_SIZE = 125995
     d = cmudict.dict()
     SIZE = len(d)
     if (EXPECTED_SIZE != SIZE):
@@ -13,7 +13,7 @@ def test_dict():
 
 
 def test_entries():
-    EXPECTED = 135086
+    EXPECTED = 135085
     e = cmudict.entries()
     COUNT = len(e)
     if (COUNT != EXPECTED):
@@ -22,7 +22,7 @@ def test_entries():
 
 
 def test_raw():
-    EXPECTED = 3615936
+    EXPECTED = 3615903
     r = cmudict.raw()
     COUNT = len(r)
     if (COUNT != EXPECTED):
@@ -31,7 +31,7 @@ def test_raw():
 
 
 def test_words():
-    EXPECTED = 135086
+    EXPECTED = 135085
     w = cmudict.words()
     COUNT = len(w)
     if (COUNT != EXPECTED):
