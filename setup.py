@@ -36,7 +36,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     license='GPL-3.0',
-    classifiers=(
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
@@ -47,5 +47,5 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
-    )
+    ]
 )
