@@ -2,9 +2,9 @@ language: python
 python:
 - pypy3
 - pypy
+- '3.7'
 - '3.6'
 - '3.5'
-- '3.4'
 - '2.7'
 install:
 - pip install -U pip
@@ -21,5 +21,5 @@ deploy:
     secure: ddvDiulUKNz0P4QR3uZApMe/nOvmR8evlSXrQ7+8peCqKOcpqrlBji6YBfGBUoErWSU3TWtuttAccAGgovEL/qgnHcJaUX2smsIKTdj0nqpPRWWJrGcpUOjAHP9Ia3j8d9gs3y0OKGWEhe6EO5tAgiGPr6u7HjaGMWxsxblXqiiro05oe33wFFiupA8vJ1Gi1ygGvKUcpqDZwjfivdkW2OlNvohycV0ZWWMqf5wM2kkj1F1llEqvW4KFM/t/t7HNBcPjCXrV3DGQAv1B5cTnGGDgDHvIaiJvXB4bgmQhS7LaqSUgIjSixnVnGKIRdiekmW3OyBy02+HYyVN0PGoZm7xndA4YsfgsmyXD08sAVZtEiyZuOSXY6xJM8Crfl0VJkJ+4u11a3Snvmb1Gkxc9sg75T8m8bdqaPsXzq8KYjtM3EB1GxA2mvCOXi/jaXtJOBw1n7P87P8kTkrdwZLSj5fcp8HxT/J/aBBoj7trEWDck8q2T68f5bnqCrTC2CO4SZQpUFRcPh0uXK3ZJPr+SpMf292yXMfZ1qweuyuZM4Fh3Fi3HaiH5Zjj85pXZHJ1iHs7RLL3lhKirSIdp6IwBg868LeSHFhZW+P1Y+mZ6TKETKe2pNIidUvH3aE3w0/79u7VdXMln5Ezl+TZsALd0OJfNLGTWLnqeCFvK53yBkiI=
   distributions: sdist bdist_wheel
   on:
-    python: '3.6'
+    python: '3.7'
     tags: true
