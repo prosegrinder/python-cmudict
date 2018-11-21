@@ -13,7 +13,7 @@ def test_dict():
 
 
 def test_entries():
-    EXPECTED = 135085
+    EXPECTED = 135091
     e = cmudict.entries()
     COUNT = len(e)
     if (COUNT != EXPECTED):
@@ -22,7 +22,7 @@ def test_entries():
 
 
 def test_raw():
-    EXPECTED = 3615903
+    EXPECTED = 3616055
     r = cmudict.raw()
     COUNT = len(r)
     if (COUNT != EXPECTED):
@@ -31,7 +31,7 @@ def test_raw():
 
 
 def test_words():
-    EXPECTED = 135085
+    EXPECTED = 135091
     w = cmudict.words()
     COUNT = len(w)
     if (COUNT != EXPECTED):
