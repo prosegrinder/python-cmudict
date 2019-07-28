@@ -30,10 +30,14 @@ def _string(resource_name):
     return string
 
 
-def _entries(stream):
+def _entries(stream, comments = False, comment_string = None):
     entries = []
     for line in stream:
-        parts = line.decode('utf-8').strip().split()
+        parts = []
+        if comments:
+            parts = line.decode('utf-8').strip().split(comment_string)[0].split()
+        else:
+            parts = line.decode('utf-8').strip().split()
         thing = re.sub(r'\(\d+\)$', '', parts[0])
         entries.append((thing, parts[1:]))
     return entries
@@ -111,7 +115,7 @@ def symbols_string():
 
 def vp():
     vp = defaultdict(list)
-    for key, value in _entries(vp_stream()):
+    for key, value in _entries(vp_stream(), False):
         vp[key].append(value)
     return vp
 
@@ -136,7 +140,7 @@ def entries():
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
-    entries = _entries(dict_stream())
+    entries = _entries(dict_stream(), True, '#')
     return entries
 
 
