@@ -12,6 +12,25 @@ def test_dict_string():
             EXPECTED_LENGTH, LENGTH))
 
 
+def test_dict_comments():
+    DICT = cmudict.dict()
+    TEST_DICT = {
+        "d'artagnan": [['D', 'AH0', 'R', 'T', 'AE1', 'NG', 'Y', 'AH0', 'N']],
+        "danglar": [['D', 'AH0', 'NG', 'L', 'AA1', 'R']],
+        "danglars": [['D', 'AH0', 'NG', 'L', 'AA1', 'R', 'Z']],
+        "gdp": [['G', 'IY1', 'D', 'IY1', 'P', 'IY1']],
+        "hiv": [['EY1', 'CH', 'AY1', 'V', 'IY1']],
+        "porthos": [['P', 'AO0', 'R', 'T', 'AO1', 'S']],
+        "spieth": [['S', 'P', 'IY1', 'TH'], ['S', 'P', 'AY1', 'AH0', 'TH']]
+    }
+    for TEST_WORD in TEST_DICT:
+        EXPECTED_PRONOUNCIATION = TEST_DICT[TEST_WORD]
+        PRONUNCIATION = DICT[TEST_WORD]
+        if EXPECTED_PRONOUNCIATION != PRONUNCIATION:
+            raise AssertionError('cmudict.dict(): Expected "{0}", got "{1}".'.format(
+                EXPECTED_PRONOUNCIATION, PRONUNCIATION))
+
+
 def test_phones():
     EXPECTED_SIZE = 39
     phones = cmudict.phones()
@@ -73,5 +92,3 @@ def test_license_string():
     if (EXPECTED_LENGTH != LENGTH):
         raise AssertionError('cmudict.license_string(): Expected {0} length, got {1}.'.format(
             EXPECTED_LENGTH, LENGTH))
-
-
