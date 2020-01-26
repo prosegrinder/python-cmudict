@@ -4,7 +4,7 @@ import cmudict
 
 
 def test_dict_string():
-    EXPECTED_LENGTH = 3616055
+    EXPECTED_LENGTH = 3616133
     dict_string = cmudict.dict_string()
     LENGTH = len(dict_string)
     if (EXPECTED_LENGTH != LENGTH):
