@@ -5,9 +5,9 @@ CMUdict: Python wrapper for cmudict
     :target: https://pypi.python.org/pypi/cmudict
     :alt: Latest PyPI version
 
-.. image:: https://travis-ci.org/prosegrinder/python-cmudict.svg?branch=master
-    :target: https://travis-ci.org/prosegrinder/python-cmudict
-    :alt: Latest Travis CI build status
+.. image:: https://github.com/prosegrinder/python-cmudict/workflows/Python%20CI/badge.svg?branch=master
+    :target: https://github.com/prosegrinder/python-cmudict/actions?query=workflow%3A%22Python+CI%22+branch%3Amaster
+    :alt: GitHub Workflow Status
 
 .. image:: https://api.codacy.com/project/badge/Grade/a4cd7e19a37d4e578160d3c3e3448101
      :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
