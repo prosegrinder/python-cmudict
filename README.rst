@@ -9,9 +9,9 @@ CMUdict: Python wrapper for cmudict
     :target: https://github.com/prosegrinder/python-cmudict/actions?query=workflow%3A%22Python+CI%22+branch%3Amaster
     :alt: GitHub Workflow Status
 
-.. image:: https://api.codacy.com/project/badge/Grade/a4cd7e19a37d4e578160d3c3e3448101
-     :target: https://www.codacy.com/app/ProseGrinder/python-cmudict?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
-     :alt: Latest Codacy Coverage Report
+.. image:: https://app.codacy.com/project/badge/Grade/d80516541edb4dc6aa4905675b7a7ba1
+    :target: https://www.codacy.com/gh/prosegrinder/python-cmudict/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=prosegrinder/python-cmudict&amp;utm_campaign=Badge_Grade
+    :alt: Latest Codacy Coverage Report
 
 `CMUdict` is a versioned python wrapper package for
 `The CMU Pronouncing Dictionary`_ data files. The main purpose
