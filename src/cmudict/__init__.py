@@ -10,15 +10,17 @@ from collections import defaultdict
 
 import pkg_resources
 
-__version__ = pkg_resources.resource_string(
-    'cmudict', 'VERSION').decode('utf-8').strip()
+__version__ = (
+    pkg_resources.resource_string("cmudict", "VERSION").decode("utf-8").strip()
+)
 
 
-CMUDICT_DICT = 'data/cmudict.dict'
-CMUDICT_PHONES = 'data/cmudict.phones'
-CMUDICT_SYMBOLS = 'data/cmudict.symbols'
-CMUDICT_VP = 'data/cmudict.vp'
-CMUDICT_LICENSE = 'data/LICENSE'
+CMUDICT_DICT = "data/cmudict.dict"
+CMUDICT_PHONES = "data/cmudict.phones"
+CMUDICT_SYMBOLS = "data/cmudict.symbols"
+CMUDICT_VP = "data/cmudict.vp"
+CMUDICT_LICENSE = "data/LICENSE"
+
 
 def _stream(resource_name):
     stream = pkg_resources.resource_stream(__name__, resource_name)
@@ -30,19 +32,20 @@ def _string(resource_name):
     return string
 
 
-def _entries(stream, comment_string = None):
-    entries = []
+def _entries(stream, comment_string=None):
+    cmudict_entries = []
     for line in stream:
         parts = []
         if comment_string:
-            parts = line.decode('utf-8').strip().split(comment_string)[0].split()
+            parts = line.decode("utf-8").strip().split(comment_string)[0].split()
         else:
-            parts = line.decode('utf-8').strip().split()
-        thing = re.sub(r'\(\d+\)$', '', parts[0])
-        entries.append((thing, parts[1:]))
-    return entries
+            parts = line.decode("utf-8").strip().split()
+        thing = re.sub(r"\(\d+\)$", "", parts[0])
+        cmudict_entries.append((thing, parts[1:]))
+    return cmudict_entries
 
 
+# pylint: disable-next=redefined-builtin
 def dict():
     """
     Compatibility with NLTK.
@@ -74,17 +77,17 @@ def license_string():
 
 
 def phones():
-    phones = []
+    cmu_phones = []
     for line in phones_stream():
-        parts = line.decode('utf-8').strip().split()
-        phones.append((parts[0], parts[1:]))
-    return phones
+        parts = line.decode("utf-8").strip().split()
+        cmu_phones.append((parts[0], parts[1:]))
+    return cmu_phones
 
 
 def phones_stream():
     """Return a readable file-like object of the cmudict.phones file."""
-    s = _stream(CMUDICT_PHONES)
-    return s
+    p_stream = _stream(CMUDICT_PHONES)
+    return p_stream
 
 
 def phones_string():
@@ -95,10 +98,10 @@ def phones_string():
 
 def symbols():
     """Return a list of symbols."""
-    symbols = []
+    cmu_symbols = []
     for line in symbols_stream():
-        symbols.append(line.decode('utf-8').strip())
-    return symbols
+        cmu_symbols.append(line.decode("utf-8").strip())
+    return cmu_symbols
 
 
 def symbols_stream():
@@ -113,11 +116,12 @@ def symbols_string():
     return string
 
 
+# pylint: disable-next=invalid-name
 def vp():
-    vp = defaultdict(list)
+    cmu_vp = defaultdict(list)
     for key, value in _entries(vp_stream()):
-        vp[key].append(value)
-    return vp
+        cmu_vp[key].append(value)
+    return cmu_vp
 
 
 def vp_stream():
@@ -140,8 +144,8 @@ def entries():
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
-    entries = _entries(dict_stream(), '#')
-    return entries
+    cmu_entries = _entries(dict_stream(), "#")
+    return cmu_entries
 
 
 def raw():
@@ -149,8 +153,8 @@ def raw():
     Compatibility with NLTK.
     Returns the cmudict lexicon as a raw string.
     """
-    string = pkg_resources.resource_string(__name__, 'data/cmudict.dict')
-    return string.decode('utf-8')
+    string = pkg_resources.resource_string(__name__, "data/cmudict.dict")
+    return string.decode("utf-8")
 
 
 def words():
