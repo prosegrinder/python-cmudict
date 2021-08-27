@@ -1,8 +1,8 @@
 include MANIFEST.in
-include README.rst
+include README.md
 include LICENSE
-exclude cmudict/data/.git
-graft cmudict
+exclude src/cmudict/data/.git
+graft src
 graft tests
 global-exclude .git
 global-exclude __pycache__
