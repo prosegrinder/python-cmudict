@@ -1,6 +1,7 @@
 """cmudict
 
-A versioned python wrapper package for The CMU Pronouncing Dictionary data files. Compatible with NLTK's CMUDictCorpusReader.
+A versioned python wrapper package for The CMU Pronouncing Dictionary data
+files. Compatible with NLTK's CMUDictCorpusReader.
 """
 
 import re
