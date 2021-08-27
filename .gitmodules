@@ -1,3 +1,3 @@
 [submodule "cmudict/data"]
-	path = cmudict/data
+	path = src/cmudict/data
 	url = https://github.com/cmusphinx/cmudict.git
