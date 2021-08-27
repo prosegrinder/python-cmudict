@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
+"""cmudict
 
-"""
-This module provides access to the location and stream of the cmudict files.
-The default function where() returns the location of the cmudict.dict file.
+A versioned python wrapper package for The CMU Pronouncing Dictionary data files. Compatible with NLTK's CMUDictCorpusReader.
 """
 
 import re
@@ -77,6 +75,7 @@ def license_string():
 
 
 def phones():
+    """Return a list of phones used in the main dict."""
     cmu_phones = []
     for line in phones_stream():
         parts = line.decode("utf-8").strip().split()
@@ -118,6 +117,7 @@ def symbols_string():
 
 # pylint: disable-next=invalid-name
 def vp():
+    """Return a list of punctuation pronounciations."""
     cmu_vp = defaultdict(list)
     for key, value in _entries(vp_stream()):
         cmu_vp[key].append(value)
