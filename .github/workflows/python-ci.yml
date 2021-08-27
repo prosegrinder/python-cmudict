@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Check Out
         uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Black
         uses: psf/black@stable
       - name: Pylint
@@ -22,6 +24,8 @@ jobs:
         python-version: [2.7, 3.6, 3.7, 3.8, 3.9]
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -42,6 +46,8 @@ jobs:
     steps:
       - name: Check Out
         uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
