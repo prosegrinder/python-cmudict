@@ -69,7 +69,7 @@ does minimal processing of the file into an appropriate structure:
 ```
 
 Three additional functions are included to maintain compatibility with NLTK:
-cumdict.entries(), cmudict.raw(), and cmudict.words(). See the
+cmudict.entries(), cmudict.raw(), and cmudict.words(). See the
 [nltk.corpus.reader.cmudict](http://www.nltk.org/_modules/nltk/corpus/reader/cmudict.html)
 documentation for details:
 
