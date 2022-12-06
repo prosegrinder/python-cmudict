@@ -24,7 +24,7 @@ def test_entries():
 
 
 def test_raw():
-    EXPECTED = 3618090
+    EXPECTED = 3618096
     r = cmudict.raw()
     COUNT = len(r)
     if COUNT != EXPECTED:
