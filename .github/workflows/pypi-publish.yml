@@ -29,6 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          persist-credentials: false
+          fetch-depth: 0
           submodules: true
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -70,7 +72,7 @@ jobs:
       - name: Commit & Push changes
         uses: actions-js/push@v1.3
         with:
-          author_email: davidlday@users.noreply.github.com
+          author_email: david@davidlday.com
           author_name: ${{ github.actor }}
           message:
             "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
