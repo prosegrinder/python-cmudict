@@ -74,14 +74,14 @@ jobs:
           author_name: ${{ github.actor }}
           message:
             "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
       - name: Tag version
         id: tag-version
         uses: mathieudutour/github-tag-action@v6.1
         with:
           custom_tag: ${{ steps.get-new-version.version }}
           create_annotated_tag: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
