@@ -2,6 +2,8 @@ name: Bump, Release, and Publish
 
 on:
   workflow_dispatch:
+    branches:
+      - main
     inputs:
       newversion:
         description: "Bump Type (major minor patch)"
@@ -12,6 +14,10 @@ on:
           - patch
           - minor
           - major
+
+concurrency:
+  group: tag-and-release
+  cancel-in-progress: true
 
 jobs:
   deploy:
