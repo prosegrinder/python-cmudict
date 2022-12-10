@@ -1,9 +1,0 @@
-include MANIFEST.in
-include README.md
-include LICENSE
-exclude src/cmudict/data/.git
-graft src
-graft tests
-global-exclude .git
-global-exclude __pycache__
-global-exclude *.py[co] .DS_Store

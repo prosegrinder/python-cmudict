@@ -21,6 +21,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Text Processing :: Linguistic",
 ]
+exclude = [
+    "src/cmudict/data/.git"
+]
 
 [tool.poetry.dependencies]
 python = "^3.7.2"
