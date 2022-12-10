@@ -52,16 +52,19 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest tests/
+      - name: Poetry Build
+        run: |
+          poetry build
       - name: Poetry Publish to PyPi Test
         if: ${{ 'true' == github.event.inputs.testpublish }}
         run: |
           poetry config repositories.testpypi https://test.pypi.org/legacy/
-          poetry publish --build --repository testpypi
+          poetry publish --repository testpypi --no-interaction --skip-existing
         env:
           POETRY_PYPI_TOKEN_TESTPYPI: ${{ secrets.TEST_PYPI_API_TOKEN }}
       - name: Poetry Publish to PyPi
         run: |
-          poetry publish --build
+          poetry publish --no-interaction
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       - name: Commit and Push
