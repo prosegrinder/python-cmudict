@@ -58,7 +58,14 @@ jobs:
           poetry publish --build
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Tag version ${{ steps.get-new-version.version }}
+      - name: Commit and Push
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message:
+            "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
+          files: pyproject.toml
+      - name: Tag version
         id: tag-version
         uses: mathieudutour/github-tag-action@v6.1
         with:
