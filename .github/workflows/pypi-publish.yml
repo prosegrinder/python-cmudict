@@ -48,11 +48,11 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest tests/
-      # - name: Poetry Publish to PyPi Test
-      #   run: |
-      #     poetry config repositories.test-pypi https://test.pypi.org/legacy/
-      #     poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
-      #     poetry publish --build --repository test-pypi
+      - name: Poetry Publish to PyPi Test
+        run: |
+          poetry config repositories.test-pypi https://test.pypi.org/legacy/
+          poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+          poetry publish --build --repository test-pypi
       - name: Poetry Publish to PyPi
         run: |
           poetry publish --build
@@ -67,6 +67,6 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          tag: ${{ steps.tag-version.outputs.new_tag }}
+          name: Release ${{ steps.tag-version.outputs.new_tag }}
+          body: ${{ steps.tag-version.outputs.changelog }}
