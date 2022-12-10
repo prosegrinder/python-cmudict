@@ -5,29 +5,34 @@ files. Compatible with NLTK's CMUDictCorpusReader.
 """
 
 import re
+import sys
 from collections import defaultdict
 
-import pkg_resources
+if sys.version_info >= (3, 9):
+    from importlib import metadata, resources
+else:
+    import importlib_metadata as metadata
+    import importlib_resources as resources
 
-__version__ = (
-    pkg_resources.resource_string("cmudict", "VERSION").decode("utf-8").strip()
-)
+__version__ = metadata.version(__name__)
 
-
-CMUDICT_DICT = "data/cmudict.dict"
-CMUDICT_PHONES = "data/cmudict.phones"
-CMUDICT_SYMBOLS = "data/cmudict.symbols"
-CMUDICT_VP = "data/cmudict.vp"
-CMUDICT_LICENSE = "data/LICENSE"
+CMUDICT_PATH = "data"
+CMUDICT_DICT = "cmudict.dict"
+CMUDICT_PHONES = "cmudict.phones"
+CMUDICT_SYMBOLS = "cmudict.symbols"
+CMUDICT_VP = "cmudict.vp"
+CMUDICT_LICENSE = "LICENSE"
 
 
 def _stream(resource_name):
-    stream = pkg_resources.resource_stream(__name__, resource_name)
-    return stream
+    stream = resources.files(__name__).joinpath(CMUDICT_PATH).joinpath(resource_name)
+    with stream.open("rb") as file:
+        return file.readlines()
 
 
 def _string(resource_name):
-    string = pkg_resources.resource_string(__name__, resource_name)
+    stream = _stream(resource_name)
+    string = "".join([line.decode("utf-8") for line in stream])
     return string
 
 
@@ -154,8 +159,8 @@ def raw():
     Compatibility with NLTK.
     Returns the cmudict lexicon as a raw string.
     """
-    string = pkg_resources.resource_string(__name__, "data/cmudict.dict")
-    return string.decode("utf-8")
+    string = _string(CMUDICT_DICT)
+    return string
 
 
 def words():
