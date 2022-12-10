@@ -65,14 +65,12 @@ jobs:
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       - name: Commit and Push
-        uses: github-actions-x/commit@v2.9
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message:
-            "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
-          files: pyproject.toml
-          force-add: true
-          force-push: true
+        run: |
+          git config --global user.name 'David L. Day'
+          git config --global user.email 'davidlday@users.noreply.github.com'
+          git add ./pyproject.toml
+          git commit -m "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
+          git push
       - name: Tag version
         id: tag-version
         uses: mathieudutour/github-tag-action@v6.1
