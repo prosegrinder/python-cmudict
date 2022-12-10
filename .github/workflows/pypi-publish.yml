@@ -55,7 +55,7 @@ jobs:
       #     poetry publish --build --repository test-pypi
       - name: Poetry Publish to PyPi
         run: |
-          poetry publish --build --repository pypi
+          poetry publish --build
         env:
           POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
       - name: Tag version ${{ steps.get-new-version.version }}
