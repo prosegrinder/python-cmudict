@@ -48,11 +48,11 @@ jobs:
         run: |
           source .venv/bin/activate
           pytest tests/
-      - name: Poetry Publish to PyPi Test
-        run: |
-          poetry config repositories.test-pypi https://test.pypi.org/legacy/
-          poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
-          poetry publish --build --repository test-pypi
+      # - name: Poetry Publish to PyPi Test
+      #   run: |
+      #     poetry config repositories.test-pypi https://test.pypi.org/legacy/
+      #     poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #     poetry publish --build --repository test-pypi
       - name: Poetry Publish to PyPi
         run: |
           poetry publish --build --repository pypi
