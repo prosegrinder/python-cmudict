@@ -8,7 +8,7 @@ import re
 import sys
 from collections import defaultdict
 
-if sys.version_info >= (3, 8):
+if sys.version_info >= (3, 9):
     from importlib import metadata, resources
 else:
     import importlib_metadata as metadata
