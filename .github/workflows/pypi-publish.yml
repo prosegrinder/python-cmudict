@@ -53,7 +53,7 @@ jobs:
           source .venv/bin/activate
           pytest tests/
       - name: Poetry Publish to PyPi Test
-        if: ${{ github.event.inputs.testpublish == "true" }}
+        if: ${{ github.event.inputs.testpublish }}
         run: |
           poetry config repositories.test-pypi https://test.pypi.org/legacy/
           poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
