@@ -71,6 +71,7 @@ jobs:
           commit-message:
             "[skip ci] bumped version to ${{ steps.get-new-version.version }}"
           files: pyproject.toml
+          force-push: true
       - name: Tag version
         id: tag-version
         uses: mathieudutour/github-tag-action@v6.1
