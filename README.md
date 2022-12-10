@@ -16,26 +16,6 @@ how it is to be used.
 pip install cmudict
 ```
 
-You can also install it from source:
-
-<!-- markdownlint-disable MD013 -->
-
-```bash
-$ git clone https://github.com/prosegrinder/python-cmudict.git
-Cloning into 'python-cmudict'...
-...
-
-$ cd python-cmudict
-$ git submodule update --init --recursive
-Submodule 'cmudict/data' (https://github.com/cmusphinx/cmudict.git) registered for path 'cmudict/data'...
-...
-
-$ python setup.py install
-...
-```
-
-<!-- markdownlint-enable MD013 -->
-
 ## Usage
 
 The cmudict data set includes 4 data files: cmudict.dict, cmudict.phones,
