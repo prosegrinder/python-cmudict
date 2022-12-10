@@ -14,6 +14,10 @@ on:
           - patch
           - minor
           - major
+      testpublish:
+        description: "Publish to TestPypi"
+        default: false
+        type: boolean
 
 concurrency:
   group: tag-and-release
@@ -49,6 +53,7 @@ jobs:
           source .venv/bin/activate
           pytest tests/
       - name: Poetry Publish to PyPi Test
+        if: ${{ github.event.inputs.testpublish == "true" }}
         run: |
           poetry config repositories.test-pypi https://test.pypi.org/legacy/
           poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
