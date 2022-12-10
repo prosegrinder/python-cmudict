@@ -55,9 +55,10 @@ jobs:
       - name: Poetry Publish to PyPi Test
         if: ${{ 'true' == github.event.inputs.testpublish }}
         run: |
-          poetry config repositories.test-pypi https://test.pypi.org/legacy/
-          poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
-          poetry publish --build --repository test-pypi
+          poetry config repositories.testpypi https://test.pypi.org/legacy/
+          poetry publish --build --repository testpypi
+        env:
+          POETRY_PYPI_TOKEN_TESTPYPI: ${{ secrets.TEST_PYPI_API_TOKEN }}
       - name: Poetry Publish to PyPi
         run: |
           poetry publish --build
