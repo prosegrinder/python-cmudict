@@ -1,6 +1,44 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "cmudict"
+version = "1.0.3"
+description = "A versioned python wrapper package for The CMU Pronouncing Dictionary data files."
+authors = ["David L. Day <david@davidlday.com>"]
+license = "GPL-3.0-or-later"
+homepage = "https://github.com/prosegrinder/python-cmudict"
+repository = "https://github.com/prosegrinder/python-cmudict"
+readme = "README.md"
+keywords = ["cmudict"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Linguistic",
 ]
-build-backend = "setuptools.build_meta"
+
+[tool.poetry.dependencies]
+python = "^3.7.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^6.2.2"
+coverage = {extras = ["toml"], version = "^6.5.0"}
+pytest-cov = "^4.0.0"
+pylint = "^2.15.8"
+black = "^22.10.0"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["cmudict"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
