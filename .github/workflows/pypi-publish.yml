@@ -1,8 +1,17 @@
-name: Upload Python Package
+name: Bump, Release, and Publish
 
 on:
-  release:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      newversion:
+        description: "Bump Type (major minor patch)"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   deploy:
@@ -13,17 +22,44 @@ jobs:
           submodules: true
       - name: Set up Python
         uses: actions/setup-python@v4
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
         with:
-          python-version: "3.x"
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Bump Version
+        run: poetry version ${{ github.event.inputs.newversion }}
+      - name: Get New Version
+        id: get-new-version
+        run: |
+          echo "version=$(poetry version -s)" >> $GITHUB_OUTPUT
       - name: Install dependencies
+        run: poetry install --with dev --no-interaction --no-root
+      - name: Install project
+        run: poetry install --with dev --no-interaction
+      - name: Run tests
         run: |
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine build
-      - name: Build Dists
+          source .venv/bin/activate
+          pytest tests/
+      - name: Poetry Publish to PyPi Test
         run: |
-          python -m build
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+          poetry config repositories.test-pypi https://test.pypi.org/legacy/
+          poetry config pypi-token.test-pypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+          poetry publish --build --repository test-pypi
+      - name: Poetry Publish to PyPi
+        run: |
+          poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+          poetry publish --build --repository pypi
+      - name: Tag version ${{ steps.get-new-version.version }}
+        id: tag-version
+        uses: mathieudutour/github-tag-action@v6.1
         with:
-          user: __token__
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          custom_tag: ${{ steps.get-new-version.version }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
