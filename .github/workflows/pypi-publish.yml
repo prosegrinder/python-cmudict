@@ -1,4 +1,4 @@
-name: Bump, Release, and Publish
+name: Bump, Publish, and Release
 
 on:
   workflow_dispatch:
@@ -19,74 +19,13 @@ on:
         default: false
         type: boolean
 
-concurrency:
-  group: tag-and-release
-  cancel-in-progress: true
-
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-          submodules: true
-      - name: Set up Python
-        uses: actions/setup-python@v4
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-      - name: Bump Version
-        run: poetry version ${{ github.event.inputs.newversion }}
-      - name: Get New Version
-        id: get-new-version
-        run: |
-          echo "version=$(poetry version -s)" >> $GITHUB_OUTPUT
-      - name: Install dependencies
-        run: poetry install --with dev --no-interaction --no-root
-      - name: Install project
-        run: poetry install --with dev --no-interaction
-      - name: Run tests
-        run: |
-          source .venv/bin/activate
-          pytest tests/
-      - name: Poetry Build
-        run: |
-          poetry build
-      - name: Poetry Publish to PyPi Test
-        if: ${{ 'true' == github.event.inputs.testpublish }}
-        run: |
-          poetry config repositories.testpypi https://test.pypi.org/legacy/
-          poetry publish --repository testpypi --no-interaction --skip-existing
-        env:
-          POETRY_PYPI_TOKEN_TESTPYPI: ${{ secrets.TEST_PYPI_API_TOKEN }}
-      - name: Poetry Publish to PyPi
-        run: |
-          poetry publish --no-interaction
-        env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Commit & Push changes
-        uses: actions-js/push@v1.3
-        with:
-          author_email: david@davidlday.com
-          author_name: ${{ github.actor }}
-          message:
-            "[skip ci] bumped to ${{ steps.get-new-version.outputs.version }}"
-          github_token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
-      - name: Tag version
-        id: tag-version
-        uses: mathieudutour/github-tag-action@v6.1
-        with:
-          custom_tag: ${{ steps.get-new-version.outputs.version }}
-          create_annotated_tag: true
-          github_token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag-version.outputs.new_tag }}
-          name: ${{ steps.tag-version.outputs.new_tag }}
-          body: ${{ steps.tag-version.outputs.changelog }}
+  publish:
+    uses: prosegrinder/.github/.github/workflows/python-poetry-publish.yaml@main
+    with:
+      newversion: ${{ github.event.inputs.newversion }}
+      testpublish: ${{ 'true' == github.event.inputs.testpublish }}
+    secrets:
+      TEST_PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+      VERSION_BUMP_TAG_TOKEN: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
