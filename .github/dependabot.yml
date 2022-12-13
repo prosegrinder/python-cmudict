@@ -8,7 +8,7 @@ updates:
       timezone: America/New_York
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "chore"
+      prefix: "ci"
       include: scope
     reviewers:
       - davidlday
@@ -21,7 +21,7 @@ updates:
       timezone: America/New_York
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "chore"
+      prefix: "build"
       include: scope
     reviewers:
       - davidlday

@@ -7,8 +7,10 @@ files. Compatible with NLTK's CMUDictCorpusReader.
 import re
 import sys
 from collections import defaultdict
+from contextlib import ExitStack
+import atexit
 
-if sys.version_info >= (3, 9):
+if sys.version_info >= (3, 10):
     from importlib import metadata, resources
 else:
     import importlib_metadata as metadata
@@ -16,23 +18,24 @@ else:
 
 __version__ = metadata.version(__name__)
 
-CMUDICT_PATH = "data"
 CMUDICT_DICT = "cmudict.dict"
 CMUDICT_PHONES = "cmudict.phones"
 CMUDICT_SYMBOLS = "cmudict.symbols"
 CMUDICT_VP = "cmudict.vp"
 CMUDICT_LICENSE = "LICENSE"
 
+file_manager = ExitStack()
+atexit.register(file_manager.close)
+
 
 def _stream(resource_name):
-    stream = resources.files(__name__).joinpath(CMUDICT_PATH).joinpath(resource_name)
-    with stream.open("rb") as file:
-        return file.readlines()
+    stream = resources.open_binary("cmudict.data", resource_name)
+    return stream
 
 
 def _string(resource_name):
     stream = _stream(resource_name)
-    string = "".join([line.decode("utf-8") for line in stream])
+    string = stream.read()
     return string
 
 
