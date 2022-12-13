@@ -37,6 +37,12 @@ pytest-cov = "^4.0.0"
 pylint = "^2.15.8"
 black = "^22.10.0"
 
+[tool.pytest.ini_options]
+filterwarnings = [
+    # note the use of single quote below to denote "raw" strings in TOML
+    'ignore:open_binary is deprecated. Use files\(\) instead.:DeprecationWarning',
+]
+
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 
