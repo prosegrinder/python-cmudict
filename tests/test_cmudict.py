@@ -3,6 +3,21 @@
 import cmudict
 
 
+def test_dict_stream():
+    EXPECTED_LENGTH = 135155
+    # borrowed from pronouncingpy to ensure compatibility
+    pronunciations = list()
+    filehandle = cmudict.dict_stream()
+    for line in filehandle:
+        line = line.strip().decode("utf-8")
+        if line.startswith(";"):
+            continue
+        word, phones = line.split(" ", 1)
+        pronunciations.append((word.split("(", 1)[0].lower(), phones))
+    filehandle.close()
+    assert len(pronunciations) == EXPECTED_LENGTH
+
+
 def test_dict_string():
     EXPECTED_LENGTH = 3618096
     dict_string = cmudict.dict_string()
