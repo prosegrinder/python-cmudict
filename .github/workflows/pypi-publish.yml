@@ -1,31 +1,21 @@
-name: Bump, Publish, and Release
+name: Publish to PyPi
 
 on:
-  workflow_dispatch:
-    branches:
-      - main
-    inputs:
-      newversion:
-        description: "Bump Type (major minor patch)"
-        required: true
-        default: "patch"
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-      testpublish:
-        description: "Publish to TestPypi"
-        default: false
-        type: boolean
+  push:
+    tags:
+      - "v*"
 
 jobs:
+  lint:
+    uses: prosegrinder/.github/.github/workflows/poetry-lint.yaml@main
+
+  test:
+    needs: lint
+    uses: prosegrinder/.github/.github/workflows/poetry-test.yaml@main
+
   publish:
-    uses: prosegrinder/.github/.github/workflows/python-poetry-publish.yaml@main
-    with:
-      newversion: ${{ github.event.inputs.newversion }}
-      testpublish: ${{ 'true' == github.event.inputs.testpublish }}
+    needs: test
+    uses: prosegrinder/.github/.github/workflows/poetry-publish.yaml@main
     secrets:
       TEST_PYPI_API_TOKEN: ${{ secrets.TEST_PYPI_API_TOKEN }}
       PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-      VERSION_BUMP_TAG_TOKEN: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
