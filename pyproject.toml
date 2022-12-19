@@ -1,3 +1,13 @@
+[tool.commitizen]
+version = "1.0.12"
+tag_format = "v$version"
+update_changelog_on_bump = true
+changelog_incremental = true
+bump_message = "bump: $current_version → $new_version"
+version_files = [
+  "pyproject.toml:version",
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
