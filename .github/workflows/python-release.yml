@@ -1,0 +1,14 @@
+name: Bump Version and Create Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+    # Don't run 'bump:'
+    uses: prosegrinder/.github/.github/workflows/poetry-release.yaml@main
+    secrets:
+      VERSION_BUMP_TAG_TOKEN: "${{ secrets.VERSION_BUMP_TAG_TOKEN }}"

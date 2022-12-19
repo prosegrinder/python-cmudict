@@ -8,5 +8,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  python-poetry-ci:
-    uses: prosegrinder/.github/.github/workflows/python-poetry-ci.yaml@main
+  lint:
+    uses: prosegrinder/.github/.github/workflows/poetry-lint.yaml@main
+
+  test:
+    needs: lint
+    uses: prosegrinder/.github/.github/workflows/poetry-test.yaml@main
+
+  cz-dry-run:
+    needs: test
+    uses: prosegrinder/.github/.github/workflows/poetry-cz-dry-run.yaml@main
+    secrets:
+      VERSION_BUMP_TAG_TOKEN: "${{ secrets.VERSION_BUMP_TAG_TOKEN }}"
