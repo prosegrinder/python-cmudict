@@ -21,7 +21,7 @@ updates:
       timezone: America/New_York
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "build"
+      prefix: "fix"
       include: scope
     reviewers:
       - davidlday
