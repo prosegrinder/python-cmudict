@@ -25,7 +25,7 @@ jobs:
           fetch-depth: 0
           submodules: true
       - name: Create bump and changelog
-        uses: commitizen-tools/commitizen-action@0.18.2
+        uses: commitizen-tools/commitizen-action@0.20.0
         with:
           github_token: ${{ secrets.VERSION_BUMP_TAG_TOKEN }}
           check_consistency: true
