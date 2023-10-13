@@ -1,0 +1,11 @@
+name: "Dependabot Batcher: Scheduled"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * 0,3"
+
+jobs:
+  dependabot-batcher:
+    uses: prosegrinder/.github/.github/workflows/dependabot-batcher.yaml@main
+    secrets:
+      DEPENDABOT_BATCH_TOKEN: ${{ secrets.DEPENDABOT_BATCH_TOKEN }}
