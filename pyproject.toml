@@ -41,7 +41,7 @@ importlib-resources = "^5.10.1"
 importlib-metadata = ">=5.1,<7.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^6.2.2"
+pytest = ">=6.2.2,<8.0.0"
 coverage = {extras = ["toml"], version = "^6.5.0"}
 pytest-cov = "^4.0.0"
 pylint = "^2.15.8"
