@@ -1,3 +1,9 @@
+## v1.0.14 (2023-10-13)
+
+### Fix
+
+- **deps**: bump src/cmudict/data from `697cd89` to `7cd8fb5` (#35)
+
 ## v1.0.13 (2022-12-19)
 
 ### Fix
