@@ -21,7 +21,21 @@ updates:
       timezone: America/New_York
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "build"
+      prefix: "fix"
       include: scope
+    reviewers:
+      - davidlday
+  - package-ecosystem: pip
+    directory: "/"
+    commit-message:
+      prefix: "fix"
+      prefix-development: "build"
+      include: "scope"
+    schedule:
+      interval: weekly
+      day: friday
+      time: "17:00"
+      timezone: America/New_York
+    open-pull-requests-limit: 10
     reviewers:
       - davidlday

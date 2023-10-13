@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: tag-and-release-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
     if: "!startsWith(github.event.head_commit.message, 'bump:')"
