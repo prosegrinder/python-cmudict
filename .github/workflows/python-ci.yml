@@ -22,7 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          persist-credentials: false
           fetch-depth: 0
           submodules: true
       - name: Create bump and changelog
