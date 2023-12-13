@@ -43,7 +43,7 @@ importlib-resources = ">=5"
 [tool.poetry.group.dev.dependencies]
 pytest = ">=6.2.2,<8.0.0"
 coverage = {extras = ["toml"], version = ">=6.5,<8.0"}
-pytest-cov = "^4.0.0"
+pytest-cov = ">=4.0"
 pylint = ">=2.15"
 black = ">=22.10,<24.0"
 
