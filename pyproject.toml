@@ -36,7 +36,7 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.7.2"
+python = "^3.8"
 importlib-metadata = ">=5"
 importlib-resources = ">=5"
 
