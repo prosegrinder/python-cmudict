@@ -44,7 +44,7 @@ importlib-resources = ">=5"
 pytest = ">=6.2.2"
 coverage = {extras = ["toml"], version = ">=6.5"}
 pytest-cov = ">=4.0"
-pylint = ">=2.15"
+pylint = ">=3"
 black = ">=22.10"
 
 [tool.pytest.ini_options]
