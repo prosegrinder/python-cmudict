@@ -1,3 +1,11 @@
+## v1.0.16 (2023-12-14)
+
+### Fix
+
+- remove version caps on importlib-resources and importlib-metadata (#48)
+- set minimum Python to 3.8
+- remove version caps on importlib-resources and importlib-metadata
+
 ## v1.0.15 (2023-10-13)
 
 ### Fix
