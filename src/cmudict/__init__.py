@@ -10,7 +10,7 @@ from collections import defaultdict
 from contextlib import ExitStack
 import atexit
 
-if sys.version_info >= (3, 10):
+if sys.version_info >= (3, 9):
     from importlib import metadata, resources
 else:
     import importlib_metadata as metadata
