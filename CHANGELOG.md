@@ -1,3 +1,10 @@
+## v1.0.18 (2024-02-06)
+
+### Fix
+
+- addresses issues accessing resources in Python v3.9 (#64)
+- restore using stdlib to 3.9 or later
+
 ## v1.0.17 (2024-02-03)
 
 ### Fix
