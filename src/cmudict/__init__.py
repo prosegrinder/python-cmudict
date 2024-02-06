@@ -10,7 +10,7 @@ from collections import defaultdict
 from contextlib import ExitStack
 import atexit
 
-if sys.version_info >= (3, 10):
+if sys.version_info >= (3, 9):
     from importlib import metadata, resources
 else:
     import importlib_metadata as metadata
@@ -18,25 +18,24 @@ else:
 
 __version__ = metadata.version(__name__)
 
-CMUDICT_DICT = "cmudict.dict"
-CMUDICT_PHONES = "cmudict.phones"
-CMUDICT_SYMBOLS = "cmudict.symbols"
-CMUDICT_VP = "cmudict.vp"
-CMUDICT_LICENSE = "LICENSE"
+CMUDICT_DICT = "data/cmudict.dict"
+CMUDICT_PHONES = "data/cmudict.phones"
+CMUDICT_SYMBOLS = "data/cmudict.symbols"
+CMUDICT_VP = "data/cmudict.vp"
+CMUDICT_LICENSE = "data/LICENSE"
 
 file_manager = ExitStack()
 atexit.register(file_manager.close)
 
 
 def _stream(resource_name):
-    stream = resources.open_binary("cmudict.data", resource_name)
+    stream = resources.files(__name__).joinpath(resource_name).open("rb")
     return stream
 
 
 def _string(resource_name):
-    stream = _stream(resource_name)
-    string = stream.read()
-    return string
+    with resources.files(__name__).joinpath(resource_name).open() as file:
+        return file.read()
 
 
 def _entries(stream, comment_string=None):
