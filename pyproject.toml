@@ -1,5 +1,5 @@
 [tool.commitizen]
-version = "1.0.20"
+version = "1.0.21"
 tag_format = "v$version"
 update_changelog_on_bump = true
 changelog_incremental = true
@@ -14,7 +14,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "cmudict"
-version = "1.0.20"
+version = "1.0.21"
 description = "A versioned python wrapper package for The CMU Pronouncing Dictionary data files."
 authors = ["David L. Day <david@davidlday.com>"]
 license = "GPL-3.0-or-later"

@@ -1,3 +1,9 @@
+## v1.0.21 (2024-03-09)
+
+### Fix
+
+- **deps**: bump importlib-metadata from 7.0.1 to 7.0.2 (#73)
+
 ## v1.0.20 (2024-03-09)
 
 ### Fix
