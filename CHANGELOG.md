@@ -1,3 +1,10 @@
+## v1.0.20 (2024-03-09)
+
+### Fix
+
+- **deps**: bump importlib-resources from 6.1.2 to 6.1.3 (#72)
+- **deps**: bump importlib-resources from 6.1.2 to 6.1.3
+
 ## v1.0.19 (2024-03-02)
 
 ### Fix
