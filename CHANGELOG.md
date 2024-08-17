@@ -1,3 +1,9 @@
+## v1.0.28 (2024-08-17)
+
+### Fix
+
+- **deps**: bump importlib-resources from 6.4.0 to 6.4.2 (#107)
+
 ## v1.0.27 (2024-07-31)
 
 ### Fix
