@@ -1,3 +1,9 @@
+## v1.0.29 (2024-08-24)
+
+### Fix
+
+- **deps**: bump importlib-metadata from 8.2.0 to 8.4.0 (#108)
+
 ## v1.0.28 (2024-08-17)
 
 ### Fix
