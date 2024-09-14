@@ -1,3 +1,10 @@
+## v1.0.31 (2024-09-14)
+
+### Fix
+
+- **deps**: bump importlib-resources from 6.4.4 to 6.4.5 (#112)
+- **deps**: bump importlib-metadata from 8.4.0 to 8.5.0 (#111)
+
 ## v1.0.30 (2024-08-24)
 
 ### Fix
