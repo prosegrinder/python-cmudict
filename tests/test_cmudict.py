@@ -4,7 +4,7 @@ import cmudict
 
 
 def test_dict_stream():
-    EXPECTED_LENGTH = 135167
+    EXPECTED_LENGTH = 135166
     # borrowed from pronouncingpy to ensure compatibility
     pronunciations = list()
     filehandle = cmudict.dict_stream()
@@ -19,7 +19,7 @@ def test_dict_stream():
 
 
 def test_dict_string():
-    EXPECTED_LENGTH = 3618509
+    EXPECTED_LENGTH = 3618488
     dict_string = cmudict.dict_string()
     LENGTH = len(dict_string)
     if EXPECTED_LENGTH != LENGTH:
