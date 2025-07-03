@@ -127,8 +127,9 @@ def symbols_string():
 def vp():
     """Return a list of punctuation pronounciations."""
     cmu_vp = defaultdict(list)
-    for key, value in _entries(vp_stream()):
-        cmu_vp[key].append(value)
+    with vp_stream() as stream:
+        for key, value in _entries(stream):
+            cmu_vp[key].append(value)
     return cmu_vp
 
 
