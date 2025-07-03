@@ -152,7 +152,8 @@ def entries():
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
-    cmu_entries = _entries(dict_stream(), "#")
+    with dict_stream() as stream:
+        cmu_entries = _entries(stream, "#")
     return cmu_entries
 
 
