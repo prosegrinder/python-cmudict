@@ -1,3 +1,15 @@
+## v1.1.0 (2025-07-21)
+
+### Feat
+
+- add type hints (#122)
+- add typed marker
+- add type hints to all functions using typing
+
+### Fix
+
+- **deps**: remove unneeded dependencies
+
 ## v1.0.33 (2025-07-04)
 
 ### Fix
