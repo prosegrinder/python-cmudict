@@ -1,5 +1,8 @@
 name: Python Poetry CI
 
+permissions:
+  contents: read
+
 on:
   pull_request:
 
@@ -8,11 +11,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    uses: prosegrinder/.github/.github/workflows/poetry-lint.yaml@main
+  black:
+    uses: prosegrinder/.github/.github/workflows/poetry-black.yaml@main
+
+  pylint:
+    uses: prosegrinder/.github/.github/workflows/poetry-pylint.yaml@main
+
+  mypy:
+    uses: prosegrinder/.github/.github/workflows/poetry-mypy.yaml@main
+
+  bandit:
+    uses: prosegrinder/.github/.github/workflows/poetry-bandit.yaml@main
 
   test:
-    needs: lint
+    needs:
+      - pylint
+      - black
+      - mypy
+      - bandit
     uses: prosegrinder/.github/.github/workflows/poetry-test.yaml@main
 
   cz-dry-run:
