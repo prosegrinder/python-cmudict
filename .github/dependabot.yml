@@ -10,8 +10,6 @@ updates:
     commit-message:
       prefix: "ci"
       include: scope
-    reviewers:
-      - davidlday
   - package-ecosystem: gitsubmodule
     directory: "/"
     schedule:
@@ -23,8 +21,6 @@ updates:
     commit-message:
       prefix: "fix"
       include: scope
-    reviewers:
-      - davidlday
   - package-ecosystem: pip
     directory: "/"
     commit-message:
@@ -37,5 +33,3 @@ updates:
       time: "17:00"
       timezone: America/New_York
     open-pull-requests-limit: 10
-    reviewers:
-      - davidlday
