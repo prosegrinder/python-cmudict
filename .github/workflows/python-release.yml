@@ -1,5 +1,8 @@
 name: Bump Version and Create Release
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -10,9 +13,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  black:
+    uses: prosegrinder/.github/.github/workflows/poetry-black.yaml@main
+
+  pylint:
+    uses: prosegrinder/.github/.github/workflows/poetry-pylint.yaml@main
+
+  mypy:
+    uses: prosegrinder/.github/.github/workflows/poetry-mypy.yaml@main
+
+  bandit:
+    uses: prosegrinder/.github/.github/workflows/poetry-bandit.yaml@main
+
+  test:
+    needs:
+      - pylint
+      - black
+      - mypy
+      - bandit
+    uses: prosegrinder/.github/.github/workflows/poetry-test.yaml@main
+
   release:
-    if: "!startsWith(github.event.head_commit.message, 'bump:')"
+    needs: test
+    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
     # Don't run 'bump:'
+    permissions:
+      contents: write
     uses: prosegrinder/.github/.github/workflows/poetry-release.yaml@main
     secrets:
       VERSION_BUMP_TAG_TOKEN: "${{ secrets.VERSION_BUMP_TAG_TOKEN }}"
