@@ -5,16 +5,11 @@ files. Compatible with NLTK's CMUDictCorpusReader.
 """
 
 import re
-import sys
 from collections import defaultdict
 from contextlib import ExitStack
 import atexit
 
-if sys.version_info >= (3, 9):
-    from importlib import metadata, resources
-else:
-    import importlib_metadata as metadata
-    import importlib_resources as resources
+from importlib import metadata, resources
 
 __version__ = metadata.version(__name__)
 
