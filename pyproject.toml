@@ -1,27 +1,37 @@
-[tool.commitizen]
-version = "1.0.33"
-tag_format = "v$version"
-update_changelog_on_bump = true
-changelog_incremental = true
-bump_message = "bump: $current_version → $new_version"
-version_files = [
-  "pyproject.toml:version",
+[project]
+name = "cmudict"
+dynamic = [ "version", "classifiers" ]
+description = "A versioned python wrapper package for The CMU Pronouncing Dictionary data files."
+license = { text = "GPL-3.0-or-later" }
+readme = "README.md"
+requires-python = ">=3.9,<4.0"
+authors = [
+    { name = "David L. Day", email = "david@davidlday.com" }
 ]
+keywords = ["cmudict"]
+dependencies = [
+    "importlib-metadata >=5",
+    "importlib-resources >=5",
+]
+
+[project.urls]
+homepage = "https://github.com/prosegrinder/python-cmudict"
+repository = "https://github.com/prosegrinder/python-cmudict"
+"Bug Tracker" = "https://github.com/prosegrinder/python-cmudict/issues"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.commitizen]
+tag_format = "v$version"
+update_changelog_on_bump = true
+changelog_incremental = true
+bump_message = "bump: $current_version → $new_version"
+version_provider = "poetry"
+
 [tool.poetry]
-name = "cmudict"
 version = "1.0.33"
-description = "A versioned python wrapper package for The CMU Pronouncing Dictionary data files."
-authors = ["David L. Day <david@davidlday.com>"]
-license = "GPL-3.0-or-later"
-homepage = "https://github.com/prosegrinder/python-cmudict"
-repository = "https://github.com/prosegrinder/python-cmudict"
-readme = "README.md"
-keywords = ["cmudict"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -34,11 +44,6 @@ classifiers = [
 exclude = [
     "src/cmudict/data/.git"
 ]
-
-[tool.poetry.dependencies]
-python = "^3.8"
-importlib-metadata = ">=5"
-importlib-resources = ">=5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=6.2.2"
