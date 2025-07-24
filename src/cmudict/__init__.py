@@ -8,7 +8,7 @@ import atexit
 import re
 from contextlib import ExitStack
 from importlib import metadata, resources
-from typing import IO, Dict, List, Optional
+from typing import IO, Dict, Optional
 
 __version__ = metadata.version(__name__)
 
@@ -34,7 +34,7 @@ def _string(resource_name: str) -> str:
 
 def _entries(
     stream: IO[bytes], comment_string: Optional[str] = None
-) -> List[tuple[str, List[str]]]:
+) -> list[tuple[str, list[str]]]:
     cmudict_entries = []
     for line in stream:
         parts = []
@@ -48,13 +48,13 @@ def _entries(
 
 
 # pylint: disable-next=redefined-builtin
-def dict() -> Dict[str, List[List[str]]]:
+def dict() -> Dict[str, list[list[str]]]:
     """
     Compatibility with NLTK.
     Returns the cmudict lexicon as a dictionary, whose keys are
     lowercase words and whose values are lists of pronunciations.
     """
-    default: Dict[str, List[List[str]]] = {}
+    default: Dict[str, list[list[str]]] = {}
     for key, value in entries():
         if key not in default:
             default[key] = []
@@ -80,9 +80,9 @@ def license_string() -> str:
     return string
 
 
-def phones() -> List[tuple[str, List[str]]]:
+def phones() -> list[tuple[str, list[str]]]:
     """Return a list of phones used in the main dict."""
-    cmu_phones: List[tuple[str, List[str]]] = []
+    cmu_phones: list[tuple[str, list[str]]] = []
     for line in phones_stream():
         parts = line.decode("utf-8").strip().split()
         cmu_phones.append((parts[0], parts[1:]))
@@ -101,9 +101,9 @@ def phones_string() -> str:
     return string
 
 
-def symbols() -> List[str]:
+def symbols() -> list[str]:
     """Return a list of symbols."""
-    cmu_symbols: List[str] = []
+    cmu_symbols: list[str] = []
     for line in symbols_stream():
         cmu_symbols.append(line.decode("utf-8").strip())
     return cmu_symbols
@@ -122,9 +122,9 @@ def symbols_string() -> str:
 
 
 # pylint: disable-next=invalid-name
-def vp() -> Dict[str, List[List[str]]]:
+def vp() -> Dict[str, list[list[str]]]:
     """Return a list of punctuation pronounciations."""
-    cmu_vp: Dict[str, List[List[str]]] = {}
+    cmu_vp: Dict[str, list[list[str]]] = {}
     with vp_stream() as stream:
         for key, value in _entries(stream):
             if not key in cmu_vp:
@@ -147,14 +147,14 @@ def vp_string() -> str:
 
 # The .entries(), .raw(), and .words() functions
 # maintain compatability with NTLK.
-def entries() -> List[tuple[str, List[str]]]:
+def entries() -> list[tuple[str, list[str]]]:
     """
     Compatibility with NLTK.
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
     with dict_stream() as stream:
-        cmu_entries: List[tuple[str, List[str]]] = _entries(stream, "#")
+        cmu_entries: list[tuple[str, list[str]]] = _entries(stream, "#")
     return cmu_entries
 
 
@@ -167,7 +167,7 @@ def raw() -> str:
     return string
 
 
-def words() -> List[str]:
+def words() -> list[str]:
     """
     Compatibility with NLTK.
     Returns a list of all words defined in the cmudict lexicon.
