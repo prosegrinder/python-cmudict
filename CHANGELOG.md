@@ -1,3 +1,11 @@
+## v1.1.1 (2025-07-24)
+
+### Fix
+
+- remove typing deprecations (#123)
+- use builtin.list instead of deprecated typing.List
+- use builtin.tuple instead of deprectated typing.Tuple
+
 ## v1.1.0 (2025-07-21)
 
 ### Feat
