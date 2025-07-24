@@ -10,7 +10,8 @@ on:
 
 concurrency:
   group: tag-and-release-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress:
+    ${{ ! startsWith(github.event.head_commit.message, 'bump:') }}
 
 jobs:
   black:
@@ -35,7 +36,7 @@ jobs:
 
   release:
     needs: test
-    if: ${{ !startsWith(github.event.head_commit.message, 'bump:') }}
+    if: ${{ ! startsWith(github.event.head_commit.message, 'bump:') }}
     # Don't run 'bump:'
     permissions:
       contents: write
