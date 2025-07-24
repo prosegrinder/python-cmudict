@@ -8,7 +8,7 @@ import atexit
 import re
 from contextlib import ExitStack
 from importlib import metadata, resources
-from typing import IO, Dict, List, Optional, Tuple
+from typing import IO, Dict, List, Optional
 
 __version__ = metadata.version(__name__)
 
@@ -34,7 +34,7 @@ def _string(resource_name: str) -> str:
 
 def _entries(
     stream: IO[bytes], comment_string: Optional[str] = None
-) -> List[Tuple[str, List[str]]]:
+) -> List[tuple[str, List[str]]]:
     cmudict_entries = []
     for line in stream:
         parts = []
@@ -80,9 +80,9 @@ def license_string() -> str:
     return string
 
 
-def phones() -> List[Tuple[str, List[str]]]:
+def phones() -> List[tuple[str, List[str]]]:
     """Return a list of phones used in the main dict."""
-    cmu_phones: List[Tuple[str, List[str]]] = []
+    cmu_phones: List[tuple[str, List[str]]] = []
     for line in phones_stream():
         parts = line.decode("utf-8").strip().split()
         cmu_phones.append((parts[0], parts[1:]))
@@ -147,14 +147,14 @@ def vp_string() -> str:
 
 # The .entries(), .raw(), and .words() functions
 # maintain compatability with NTLK.
-def entries() -> List[Tuple[str, List[str]]]:
+def entries() -> List[tuple[str, List[str]]]:
     """
     Compatibility with NLTK.
     Returns the cmudict lexicon as a list of entries
     containing (word, transcriptions) tuples.
     """
     with dict_stream() as stream:
-        cmu_entries: List[Tuple[str, List[str]]] = _entries(stream, "#")
+        cmu_entries: List[tuple[str, List[str]]] = _entries(stream, "#")
     return cmu_entries
 
 
