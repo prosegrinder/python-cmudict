@@ -51,7 +51,7 @@ coverage = {extras = ["toml"], version = ">=6.5"}
 pytest-cov = ">=4.0"
 pylint = ">=3"
 black = ">=22.10"
-mypy = "^1.17.1"
+mypy = "^1.18.2"
 bandit = "^1.8.6"
 
 [tool.pytest.ini_options]
