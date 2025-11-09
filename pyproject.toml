@@ -70,3 +70,6 @@ source = ["cmudict"]
 [tool.coverage.report]
 show_missing = true
 fail_under = 100
+
+[tool.black]
+extend-exclude = "src/cmudict/data/.*"
