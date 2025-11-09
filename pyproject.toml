@@ -42,7 +42,8 @@ classifiers = [
     "Topic :: Text Processing :: Linguistic",
 ]
 exclude = [
-    "src/cmudict/data/.git"
+    "src/cmudict/data/.git",
+    "src/cmudict/data/**/*.py"
 ]
 
 [tool.poetry.group.dev.dependencies]
